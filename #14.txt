@@ -1,0 +1,143 @@
+Started by user admin
+Connecting to https://api.github.com using AC.Arunkumar@ltimindtree.com/****** (PErsonal access token for github)
+Obtained jenkins/jenkinsFile.groovy from f080fe714c0c4d392636ed5f2a001368fe90403f
+[Pipeline] Start of Pipeline
+[Pipeline] properties
+[Pipeline] node
+Running on RDP_zOS_Agent in /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (DEBUG)
+[Pipeline] echo
+==== DEBUG: Entered Jenkinsfile ====
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (init)
+[Pipeline] echo
+** Init Step: Setting up a Git Env
+[Pipeline] script
+[Pipeline] {
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Cleanup Workspace)
+[Pipeline] deleteDir
+[Pipeline] echo
+** Cleaned Up Workspace For Project
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Clone Repository)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential Github_PAT
+Cloning the remote Git repository
+Cloning repository git@github.com:LTIM-Digital-Engineering/Mainframe_DevOps.git
+ > /u/ibmuser/git-jenkins.sh init /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/Mainframe_DevOps # timeout=10
+Fetching upstream changes from git@github.com:LTIM-Digital-Engineering/Mainframe_DevOps.git
+ > /u/ibmuser/git-jenkins.sh --version # timeout=10
+ > git --version # 'git version 2.42.0-6'
+using GIT_ASKPASS to set credentials PErsonal access token for github
+Using name charset 'IBM1047'
+Using password charset 'IBM1047'
+ > /u/ibmuser/git-jenkins.sh fetch --tags --force --progress -- git@github.com:LTIM-Digital-Engineering/Mainframe_DevOps.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /u/ibmuser/git-jenkins.sh config remote.origin.url git@github.com:LTIM-Digital-Engineering/Mainframe_DevOps.git # timeout=10
+ > /u/ibmuser/git-jenkins.sh config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Checking out Revision f080fe714c0c4d392636ed5f2a001368fe90403f (origin/main)
+ > /u/ibmuser/git-jenkins.sh rev-parse origin/main^{commit} # timeout=10
+ > /u/ibmuser/git-jenkins.sh config core.sparsecheckout # timeout=10
+ > /u/ibmuser/git-jenkins.sh checkout -f f080fe714c0c4d392636ed5f2a001368fe90403f # timeout=10
+Commit message: "Create TazUnitTest.properties"
+ > /u/ibmuser/git-jenkins.sh rev-list --no-walk f080fe714c0c4d392636ed5f2a001368fe90403f # timeout=10
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Full Build)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+** Building..
+[Pipeline] sh
++ pwd 
+/u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2
++ ls -l /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/Mainframe_DevOps/COBOL 
+total 16
+-rw-r--r--   1 OMVSKERN OMVSGRP      684 Jul  2 12:05 HLOWRLD.cbl
++ /usr/lpp/IBM/dbb/bin/groovyz -Dlog4j.configurationFile=file:/u/ibmuser/log4j2.properties /u/ibmuser/dbb-zappbuild/build.groovy -w /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2 -a Mainframe_DevOps -o /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/buildlogs/build-14 -h IBMUSER.JENKINS.PIPELINE -id ibmuser -pw ltim --fullBuild 
+
+** Build start at 20250702.120636.917
+**************** Initialization of the build process ****************
+*! Error executing Git command: git -C /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/Mainframe_DevOps symbolic-ref -q HEAD error 12:06:37.294333 ./trace.c:317           setup: git_dir: .git
+12:06:37.294347 ./trace.c:318           setup: git_common_dir: .git
+12:06:37.294352 ./trace.c:319           setup: worktree: /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/Mainframe_DevOps
+12:06:37.294355 ./trace.c:320           setup: cwd: /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/Mainframe_DevOps
+12:06:37.294358 ./trace.c:321           setup: prefix: (null)
+
+*! Error executing Git command: git -C /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/Mainframe_DevOps show -s --pretty=%D HEAD error: 12:06:37.317642 ./trace.c:317           setup: git_dir: .git
+12:06:37.317653 ./trace.c:318           setup: git_common_dir: .git
+12:06:37.317657 ./trace.c:319           setup: worktree: /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/Mainframe_DevOps
+12:06:37.317660 ./trace.c:320           setup: cwd: /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/Mainframe_DevOps
+12:06:37.317663 ./trace.c:321           setup: prefix: (null)
+
+** Running zAppBuild Version 3.11.0-BASE 
+** Build output located at /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/buildlogs/build-14/build.20250702.120636.917
+** Build result created for BuildGroup:Mainframe_DevOps-main BuildLabel:build.20250702.120636.917
+** Loading DBB scanner mapping configuration dbb.scannerMapping
+************* Creation and processing of the build list *************
+** --fullBuild option selected. Building all programs for application Mainframe_DevOps. Recreating DBB collections.
+** Deleting collection Mainframe_DevOps-main
+** Deleting collection Mainframe_DevOps-main-outputs
+** Writing build list file to /u/ibmuser/jenkins/workspace/MFDevOps_Pipeline_main_2/buildlogs/build-14/build.20250702.120636.917/buildList.txt
+** Invoking build scripts according to build order: BMS.groovy,MFS.groovy,Cobol.groovy,Assembler.groovy,PLI.groovy,LinkEdit.groovy,DBDgen.groovy,PSBgen.groovy,Transfer.groovy,CRB.groovy,zCEE2.groovy
+** Building 1 file mapped to Cobol.groovy script
+*** (1/1) Building file Mainframe_DevOps/COBOL/HLOWRLD.cbl
+Caught: java.lang.IllegalArgumentException: BGZTK0177E Missing a dataset name, path, or DDStatement reference within the DD statement for 'SYSLIB' at position '1' (1-based).
+java.lang.IllegalArgumentException: BGZTK0177E Missing a dataset name, path, or DDStatement reference within the DD statement for 'SYSLIB' at position '1' (1-based).
+	at com.ibm.dbb.build.DDStatement.addConcatenation(DDStatement.java:101)
+	at com.ibm.dbb.build.DDStatement.concatenate(DDStatement.java:394)
+	at com.ibm.dbb.build.AbstractExec.addDDStatement(AbstractExec.java:118)
+	at com.ibm.dbb.build.AbstractExec.dd(AbstractExec.java:228)
+	at Cobol.createLinkEditCommand(Cobol.groovy:398)
+	at Cobol$_run_closure1.doCall(Cobol.groovy:69)
+	at Cobol.run(Cobol.groovy:36)
+	at com.ibm.dbb.groovy.AbstractLoader.execute(AbstractLoader.groovy:153)
+	at com.ibm.dbb.groovy.AbstractLoader.runScript(AbstractLoader.groovy:111)
+	at build$_run_closure1.doCall(build.groovy:74)
+	at build.run(build.groovy:65)
+** Build finished
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+** Cleanup...
+[Pipeline] sh
++ test -f /u/ibmuser/.git-credentials 
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+
+GitHub has been notified of this commit’s build result
+
+Finished: FAILURE
